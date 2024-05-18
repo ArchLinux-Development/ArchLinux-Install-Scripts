@@ -3,7 +3,7 @@
 
 ![Arch Linux](https://upload.wikimedia.org/wikipedia/commons/a/a5/Archlinux-icon-crystal-64.svg)
 
-Welcome to the Arch Linux Installation and Maintenance Scripts repository! This collection of scripts is designed to simplify the installation of Arch Linux with different filesystems and configurations, as well as maintenance tasks. Currently, we have scripts for BTRFS, ZFS, and various system maintenance tasks, including fixing a corrupted bootloader and optimizing system performance. Each script will guide you through the necessary steps to achieve the desired setup or maintenance.
+Welcome to the Arch Linux Installation and Maintenance Scripts repository! This collection of scripts simplifies the installation of Arch Linux with different filesystems and configurations, as well as system maintenance tasks. 
 
 ## Available Scripts
 
@@ -12,125 +12,160 @@ Welcome to the Arch Linux Installation and Maintenance Scripts repository! This 
 - **optimize_arch.sh**: Optimizes Arch Linux system performance.
 - **fix_bootloader.sh**: Fixes a corrupted bootloader for standard filesystems.
 - **fix_bootloader_btrfs.sh**: Fixes a corrupted bootloader for BTRFS filesystem.
+- **improve_fonts.sh**: Enhances font rendering and appearance.
+- **improve_fonts_kde.sh**: Optimizes font settings for KDE Plasma.
+- **rebuild-pacman-db.sh**: Rebuilds the Pacman database.
+- **reinstall_sddm.sh**: Reinstalls SDDM and resets its configuration.
 
 ## How to Use the Scripts
 
-### For Installation Scripts
+### Installation Scripts
 
 #### BTRFS Installation
 
-1. Save the script to a file, for example, `install_arch_btrfs.sh`.
-2. Make the script executable:
-
-    ```bash
-    chmod +x install_arch_btrfs.sh
-    ```
-
-3. Run the script with root privileges:
-
-    ```bash
-    sudo ./install_arch_btrfs.sh
-    ```
+1. Save the script to a file, e.g., `install_arch_btrfs.sh`.
+2. Make it executable:
+   ```bash
+   chmod +x install_arch_btrfs.sh
+   ```
+3. Run with root privileges:
+   ```bash
+   sudo ./install_arch_btrfs.sh
+   ```
 
 #### ZFS Installation
 
-1. Save the script to a file, for example, `install_arch_zfs.sh`.
-2. Make the script executable:
+1. Save the script to a file, e.g., `install_arch_zfs.sh`.
+2. Make it executable:
+   ```bash
+   chmod +x install_arch_zfs.sh
+   ```
+3. Run with root privileges:
+   ```bash
+   sudo ./install_arch_zfs.sh
+   ```
 
-    ```bash
-    chmod +x install_arch_zfs.sh
-    ```
-
-3. Run the script with root privileges:
-
-    ```bash
-    sudo ./install_arch_zfs.sh
-    ```
-
-### For Maintenance Scripts
+### Maintenance Scripts
 
 #### System Optimization
 
-1. Save the script to a file, for example, `optimize_arch.sh`.
-2. Make the script executable:
-
-    ```bash
-    chmod +x optimize_arch.sh
-    ```
-
-3. Run the script with root privileges:
-
-    ```bash
-    sudo ./optimize_arch.sh
-    ```
+1. Save the script to a file, e.g., `optimize_arch.sh`.
+2. Make it executable:
+   ```bash
+   chmod +x optimize_arch.sh
+   ```
+3. Run with root privileges:
+   ```bash
+   sudo ./optimize_arch.sh
+   ```
 
 #### Fix Bootloader (Standard Filesystem)
 
 1. Boot into Arch Linux live environment.
 2. Mount your root partition to `/mnt`:
-
-    ```bash
-    mount /dev/sda2 /mnt
-    ```
-
-3. Save the script to a file, for example, `fix_bootloader.sh`.
-4. Make the script executable:
-
-    ```bash
-    chmod +x fix_bootloader.sh
-    ```
-
-5. Run the script with root privileges:
-
-    ```bash
-    sudo ./fix_bootloader.sh
-    ```
+   ```bash
+   mount /dev/sda2 /mnt
+   ```
+3. Save the script to a file, e.g., `fix_bootloader.sh`.
+4. Make it executable:
+   ```bash
+   chmod +x fix_bootloader.sh
+   ```
+5. Run with root privileges:
+   ```bash
+   sudo ./fix_bootloader.sh
+   ```
 
 #### Fix Bootloader (BTRFS Filesystem)
 
 1. Boot into Arch Linux live environment.
 2. Mount your root partition to `/mnt` with BTRFS subvolumes:
+   ```bash
+   mount -o subvol=@ /dev/sda2 /mnt
+   ```
+3. Save the script to a file, e.g., `fix_bootloader_btrfs.sh`.
+4. Make it executable:
+   ```bash
+   chmod +x fix_bootloader_btrfs.sh
+   ```
+5. Run with root privileges:
+   ```bash
+   sudo ./fix_bootloader_btrfs.sh
+   ```
 
-    ```bash
-    mount -o subvol=@ /dev/sda2 /mnt
-    ```
+#### Font Improvement Scripts
 
-3. Save the script to a file, for example, `fix_bootloader_btrfs.sh`.
-4. Make the script executable:
+#### Improve Fonts
 
-    ```bash
-    chmod +x fix_bootloader_btrfs.sh
-    ```
+1. Save the script to a file, e.g., `improve_fonts.sh`.
+2. Make it executable:
+   ```bash
+   chmod +x improve_fonts.sh
+   ```
+3. Run with root privileges:
+   ```bash
+   sudo ./improve_fonts.sh
+   ```
+   
+#### Improve Fonts for KDE
 
-5. Run the script with root privileges:
+1. Save the script to a file, e.g., `improve_fonts_kde.sh`.
+2. Make it executable:
+   ```bash
+   chmod +x improve_fonts_kde.sh
+   ```
+3. Run with root privileges:
+   ```bash
+   sudo ./improve_fonts_kde.sh
+   ```
 
-    ```bash
-    sudo ./fix_bootloader_btrfs.sh
-    ```
+### Rebuild Pacman Database
+
+1. Save the script to a file, e.g., `rebuild-pacman-db.sh`.
+2. Make it executable:
+   ```bash
+   chmod +x rebuild-pacman-db.sh
+   ```
+3. Run with root privileges:
+   ```bash
+   sudo ./rebuild-pacman-db.sh
+   ```
+
+### Reinstall SDDM
+
+1. Save the script to a file, e.g., `reinstall_sddm.sh`.
+2. Make it executable:
+   ```bash
+   chmod +x reinstall_sddm.sh
+   ```
+3. Run with root privileges:
+   ```bash
+   sudo ./reinstall_sddm.sh
+   ```
 
 ## Script Explanations
 
 ### BTRFS Installation Script
 
-1. **Network Check**: The script checks for an active network connection and prompts for network setup if needed.
-2. **Disk Partitioning**: The script partitions the specified disk into an EFI partition and a BTRFS partition.
-3. **BTRFS Setup**: The script formats the BTRFS partition and creates subvolumes for root, home, and snapshots.
-4. **Package Installation**: The script installs the specified packages using `pacstrap`.
-5. **System Configuration**: The script configures localization, network settings, and the bootloader.
-6. **User Setup**: The script prompts for a username and password, encrypts the password, and creates the user.
-7. **Services**: The script enables necessary services such as `sddm`, `NetworkManager`, and `zram-generator`.
-8. **Reboot**: The script unmounts the partitions and reboots the system.
+1. **Network Check**: Checks for an active network connection and prompts for setup if needed.
+2. **Disk Partitioning**: Partitions the specified disk into an EFI partition and a BTRFS partition.
+3. **BTRFS Setup**: Formats the BTRFS partition and creates subvolumes for root, home, and snapshots.
+4. **Package Installation**: Installs the specified packages using `pacstrap`.
+5. **System Configuration**: Configures localization, network settings, and the bootloader.
+6. **User Setup**: Prompts for a username and password, encrypts the password, and creates the user.
+7. **Services**: Enables necessary services such as `sddm`, `NetworkManager`, and `zram-generator`.
+8. **Reboot**: Unmounts the partitions and reboots the system.
 
 ### ZFS Installation Script
 
-1. **Network Check**: The script checks for an active network connection and prompts for network setup if needed.
-2. **Disk Partitioning**: The script partitions the specified disk into an EFI partition and a partition for ZFS.
-3. **ZFS Setup**: The script installs necessary ZFS packages, loads the ZFS module, and creates the ZFS pool and datasets.
-4. **Package Installation**: The script installs the specified packages using `pacstrap`.
-5. **System Configuration**: The script configures localization, network settings, and the bootloader.
-6. **User Setup**: The script prompts for a username and password, encrypts the password, and creates the user.
-7. **Services**: The script enables necessary services such as `sddm`, `NetworkManager`, `zram-generator`, and ZFS-related services.
-8. **Reboot**: The script unmounts the partitions and reboots the system.
+1. **Network Check**: Checks for an active network connection and prompts for setup if needed.
+2. **Disk Partitioning**: Partitions the specified disk into an EFI partition and a partition for ZFS.
+3. **ZFS Setup**: Installs necessary ZFS packages, loads the ZFS module, and creates the ZFS pool and datasets.
+4. **Package Installation**: Installs the specified packages using `pacstrap`.
+5. **System Configuration**: Configures localization, network settings, and the bootloader.
+6. **User Setup**: Prompts for a username and password, encrypts the password, and creates the user.
+7. **Services**: Enables necessary services such as `sddm`, `NetworkManager`, `zram-generator`, and ZFS-related services.
+8. **Reboot**: Unmounts the partitions and reboots the system.
 
 ### System Optimization Script
 
@@ -162,6 +197,21 @@ Welcome to the Arch Linux Installation and Maintenance Scripts repository! This 
 5. **Install GRUB Bootloader**: Reinstall the GRUB bootloader.
 6. **Generate GRUB Configuration File**: Generate a new GRUB configuration file.
 7. **Unmount Directories and Partitions**: Unmount the bind mounts and partitions.
+
+### Font Improvement Scripts
+
+#### Improve Fonts
+
+1. Installs necessary packages and popular fonts.
+2. Configures font rendering settings.
+3. Updates the font cache.
+
+#### Improve Fonts for KDE
+
+1. Installs necessary packages and popular fonts.
+2. Configures font rendering settings.
+3. Updates the font cache.
+4. Additional KDE-specific font configuration.
 
 ## Future Plans
 
